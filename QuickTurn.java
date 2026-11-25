@@ -7,6 +7,8 @@ public class QuickTurn {
     private static int numberOfSides;
     private static int numberOfDice;
     private static int damageMod;
+    private static int hitRoll;
+    private static int damageRoll;
 
     public static void main(String[] args) {
         begin();
@@ -21,7 +23,14 @@ public class QuickTurn {
                 numberOfDice = Integer.parseInt(IO.readln("Enter number of damage dice:\n"));
                 damageMod = Integer.parseInt(IO.readln("Enter the damage modifier:\n"));
             } else if (action.equals("2") || action.equals("USE")) {
-                IO.println("Not Finished");
+                hitRoll = (int) ((Math.random() * 20) + 1 + hitMod);
+                IO.println("Hit (+" + hitMod + "): " + hitRoll);
+                damageRoll = 0;
+                for (int i = 0; i < numberOfDice; i++) {
+                    damageRoll += (int) ((Math.random() * numberOfSides) + 1 + damageMod);
+                }
+                IO.println("Damage (" + numberOfDice + "D" + numberOfSides + "+" + damageMod + "): " + damageRoll);
+                IO.readln("");
             } else if (action.equals("3") || action.equals("EXIT")) {
                 break;
             } else {
