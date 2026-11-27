@@ -18,10 +18,42 @@ public class QuickTurn {
         while (true) {
             action = IO.readln("Enter Command:\n1.CREATE\n2.USE\n3.EXIT\n");
             if (action.equals("1") || action.equals("CREATE")) {
-                hitMod = Integer.parseInt(IO.readln("Enter the hit modifier:\n"));
-                numberOfSides = Integer.parseInt(IO.readln("Enter number of sides on the damage dice:\n"));
-                numberOfDice = Integer.parseInt(IO.readln("Enter number of damage dice:\n"));
-                damageMod = Integer.parseInt(IO.readln("Enter the damage modifier:\n"));
+                while (true) {
+                    try {
+                        hitMod = Integer.parseInt(IO.readln("Enter the hit modifier:\n"));
+                        break;
+                    } catch (NumberFormatException e) {
+                        IO.println("Invalid Hit Modifier");
+                        IO.readln("");
+                    }
+                }
+                while (true) {
+                    try {
+                        numberOfSides = Integer.parseInt(IO.readln("Enter number of sides on the damage dice:\n"));
+                        break;
+                    } catch (NumberFormatException e) {
+                        IO.println("Invalid Damage Die");
+                        IO.readln("");
+                    }
+                }
+                while (true) {
+                    try {
+                        numberOfDice = Integer.parseInt(IO.readln("Enter number of damage dice:\n"));
+                        break;
+                    } catch (NumberFormatException e) {
+                        IO.println("Invalid Number");
+                        IO.readln("");
+                    }
+                }
+                while (true) {
+                    try {
+                        damageMod = Integer.parseInt(IO.readln("Enter the damage modifier:\n"));
+                        break;
+                    } catch (NumberFormatException e) {
+                        IO.println("Invalid Damage Modifier");
+                        IO.readln("");
+                    }
+                }
             } else if (action.equals("2") || action.equals("USE")) {
                 hitRoll = (int) ((Math.random() * 20) + 1 + hitMod);
                 IO.println("Hit (+" + hitMod + "): " + hitRoll);
