@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class QuickTurn {
     private static String action;
+    private static String name;
     private static int hitMod;
     private static int numberOfSides;
     private static int numberOfDice;
@@ -18,6 +19,7 @@ public class QuickTurn {
         while (true) {
             action = IO.readln("Enter Command:\n1.CREATE\n2.USE\n3.EXIT\n");
             if (action.equals("1") || action.equals("CREATE")) {
+                name = IO.readln("Enter a name for this template:\n");
                 while (true) {
                     try {
                         hitMod = Integer.parseInt(IO.readln("Enter the hit modifier:\n"));
@@ -71,6 +73,7 @@ public class QuickTurn {
                     IO.println("No Template");
                     IO.readln("");
                 } else {
+                    IO.println("\n" + name);
                     hitRoll = (int) ((Math.random() * 20) + 1 + hitMod);
                     IO.println("Hit (+" + hitMod + "): " + hitRoll);
                     damageRoll = 0;
